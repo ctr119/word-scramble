@@ -31,6 +31,15 @@ struct ContentView: View {
         }
         .listStyle(.grouped)
     }
+    
+    private func loadResourcesFromAppBundle() {
+        guard let fileUrl = Bundle.main.url(forResource: "test", withExtension: "txt"),
+              let fileContent = try? String(contentsOf: fileUrl) else {
+            return
+        }
+        
+        print(fileContent) // Content loaded!
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
