@@ -40,6 +40,20 @@ struct ContentView: View {
         
         print(fileContent) // Content loaded!
     }
+    
+    private func meetUIChecker() {
+        let word = "swift"
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: word.utf16.count)
+        
+        let misspelledRange = checker.rangeOfMisspelledWord(in: word,
+                                                            range: range,
+                                                            startingAt: 0,
+                                                            wrap: false,
+                                                            language: "en")
+        let allGood = misspelledRange.location == NSNotFound
+        print(allGood)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
