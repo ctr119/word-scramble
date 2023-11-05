@@ -9,6 +9,9 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var points: Int = 0
+    @State private var largestWord: String = ""
+    
     var body: some View {
         NavigationStack {
             List {
@@ -23,6 +26,22 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "\(word.count).circle")
                             Text(word)
+                        }
+                    }
+                }
+                
+                Section {
+                    VStack(alignment: .center, spacing: 20) {
+                        Text("^[\(points) point](inflect: true)")
+                            .font(.largeTitle.monospaced())
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                        
+                        VStack {
+                            Text("Largest word")
+                                .font(.caption)
+                            Text(largestWord.isEmpty ? "-" : largestWord)
+                                .font(.body.italic())
                         }
                     }
                 }
@@ -47,6 +66,9 @@ struct ContentView: View {
         
         let words = fileContent.components(separatedBy: "\n")
         rootWord = words.randomElement() ?? "silkworm"
+        points = 0
+        largestWord = ""
+        usedWords.removeAll()
     }
     
     private func addNewWord() {
@@ -78,6 +100,11 @@ struct ContentView: View {
         
         withAnimation {
             usedWords.insert(word, at: 0)
+            points += word.count
+            
+            if word.count > largestWord.count {
+                largestWord = word
+            }
         }
         newWord = ""
     }
