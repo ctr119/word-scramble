@@ -35,6 +35,9 @@ struct ContentView: View {
             } message: {
                 Text(errorMessage)
             }
+            .toolbar {
+                Button("Re-start", action: startGame)
+            }
         }
     }
     
