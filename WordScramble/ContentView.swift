@@ -25,7 +25,16 @@ struct ContentView: View {
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
+            .onAppear(perform: startGame)
         }
+    }
+    
+    private func startGame() {
+        guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
+              let fileContent = try? String(contentsOf: fileUrl) else { fatalError() }
+        
+        let words = fileContent.components(separatedBy: "\n")
+        rootWord = words.randomElement() ?? "silkworm"
     }
     
     private func addNewWord() {
