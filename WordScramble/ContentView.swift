@@ -1,8 +1,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var usedWords = [String]()
+    @State private var rootWord = ""
+    @State private var newWord = ""
+    
     var body: some View {
-        genuineDynamicList
+        NavigationStack {
+            List {
+                Section {
+                    TextField("Enter your word", text: $newWord)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
+                
+                Section {
+                    ForEach(usedWords, id: \.self) { word in
+                        Text(word)
+                    }
+                }
+            }
+            .navigationTitle(rootWord)
+            .onSubmit(addNewWord)
+        }
+    }
+    
+    private func addNewWord() {
+        guard newWord.count > 0 else { return }
+        let word = newWord
+            .lowercased()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        usedWords.insert(word, at: 0)
+        newWord = ""
     }
 }
 
