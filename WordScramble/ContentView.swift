@@ -47,7 +47,15 @@ struct ContentView: View {
     }
     
     private func addNewWord() {
-        guard newWord.count > 0 else { return }
+        guard newWord.count >= 3 else {
+            wordError(title: "Short word", message: "Think about words with more than 2 letters")
+            return
+        }
+        guard newWord != rootWord else {
+            wordError(title: "Same word", message: "Use a different word than the root one!")
+            return
+        }
+        
         let word = newWord
             .lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
