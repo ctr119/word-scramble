@@ -4,7 +4,15 @@ struct ContentView: View {
     var body: some View {
         genuineDynamicList
     }
-    
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+private extension ContentView {
     private var genuineDynamicList: some View {
         List(0..<5) {
             Text("Dynamic row \($0)")
@@ -53,11 +61,5 @@ struct ContentView: View {
                                                             language: "en")
         let allGood = misspelledRange.location == NSNotFound
         print(allGood)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
