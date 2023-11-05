@@ -14,37 +14,33 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    TextField("Enter your word", text: $newWord)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                }
+            VStack {
+                TextField("Enter your word", text: $newWord)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .padding()
                 
-                Section {
-                    ForEach(usedWords, id: \.self) { word in
-                        HStack {
-                            Image(systemName: "\(word.count).circle")
-                            Text(word)
-                        }
+                List(usedWords, id: \.self) { word in
+                    HStack {
+                        Image(systemName: "\(word.count).circle")
+                        Text(word)
                     }
                 }
+                .listStyle(.inset)
                 
-                Section {
-                    VStack(alignment: .center, spacing: 20) {
-                        Text("^[\(points) point](inflect: true)")
-                            .font(.largeTitle.monospaced())
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                        
-                        VStack {
-                            Text("Largest word")
-                                .font(.caption)
-                            Text(largestWord.isEmpty ? "-" : largestWord)
-                                .font(.body.italic())
-                        }
+                VStack(alignment: .center, spacing: 20) {
+                    Text("^[\(points) point](inflect: true)")
+                        .font(.largeTitle.monospaced())
+                        .frame(maxWidth: .infinity)
+                    
+                    VStack {
+                        Text("Largest word")
+                            .font(.caption)
+                        Text(largestWord.isEmpty ? "-" : largestWord)
+                            .font(.body.italic())
                     }
                 }
+                .padding(.top, 20)
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
