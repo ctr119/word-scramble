@@ -1,6 +1,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum WordError: Error {
+        case short
+        case same
+        case alreadyUsed
+        case notPossible
+        case notRecognised
+        
+        var info: (String, String) {
+            switch self {
+            case .short:
+                return ("Short word", "Think about words with more than 2 letters")
+            case .same:
+                return ("Same word", "Use a different word than the root one!")
+            case .alreadyUsed:
+                return ("Word used already", "Be more original")
+            case .notPossible:
+                return ("Word not possible", "You can't spell that word from the root one!")
+            case .notRecognised:
+                return ("Word not recognized", "You can't just make them up, you know!")
+            }
+        }
+    }
+    
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
@@ -68,29 +91,19 @@ struct ContentView: View {
     }
     
     private func addNewWord() {
-        guard newWord.count >= 3 else {
-            wordError(title: "Short word", message: "Think about words with more than 2 letters")
-            return
-        }
-        guard newWord != rootWord else {
-            wordError(title: "Same word", message: "Use a different word than the root one!")
-            return
-        }
-        
         let word = newWord
             .lowercased()
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard !hasAlreadyBeenUsed(word: word) else {
-            wordError(title: "Word used already", message: "Be more original")
-            return
-        }
-        guard isPossible(word: word) else {
-            wordError(title: "Word not possible", message: "You can't spell that word from '\(rootWord)'!")
-            return
-        }
-        guard isReal(word: word) else {
-            wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
+        do {
+            try validate(word: word)
+        } catch {
+            if let wError = error as? WordError {
+                let (title, message) = wError.info
+                errorTitle = title
+                errorMessage = message
+                showingError = true
+            }
             return
         }
         
@@ -103,6 +116,24 @@ struct ContentView: View {
             }
         }
         newWord = ""
+    }
+    
+    private func validate(word: String) throws {
+        guard newWord.count >= 3 else {
+            throw WordError.short
+        }
+        guard newWord != rootWord else {
+            throw WordError.same
+        }
+        guard !hasAlreadyBeenUsed(word: word) else {
+            throw WordError.alreadyUsed
+        }
+        guard isPossible(word: word) else {
+            throw WordError.notPossible
+        }
+        guard isReal(word: word) else {
+            throw WordError.notRecognised
+        }
     }
     
     private func hasAlreadyBeenUsed(word: String) -> Bool {
@@ -132,12 +163,6 @@ struct ContentView: View {
                                                             wrap: false,
                                                             language: "en")
         return misspelledRange.location == NSNotFound
-    }
-    
-    private func wordError(title: String, message: String) {
-        errorTitle = title
-        errorMessage = message
-        showingError = true
     }
 }
 
