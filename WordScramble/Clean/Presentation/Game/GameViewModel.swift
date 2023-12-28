@@ -17,6 +17,8 @@ class GameViewModel: ObservableObject {
     var largestWord: String = ""
     var error: WordError?
     
+    private let validateWordUseCase = ValidateWordUseCase()
+    
     func startGame() {
         guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
               let fileContent = try? String(contentsOf: fileUrl) else { fatalError() }
@@ -34,7 +36,13 @@ class GameViewModel: ObservableObject {
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
         do {
-            try validate(word: word)
+            try validateWordUseCase(word: word,
+                                    rootWord: rootWord,
+                                    usedWords: usedWords)
+            
+            guard isReal(word: word) else {
+                throw WordError.notRecognised
+            }
         } catch {
             if let wError = error as? WordError {
                 self.error = wError
@@ -52,42 +60,6 @@ class GameViewModel: ObservableObject {
             }
         }
         newWord = ""
-    }
-    
-    private func validate(word: String) throws {
-        guard newWord.count >= 3 else {
-            throw WordError.short
-        }
-        guard newWord != rootWord else {
-            throw WordError.same
-        }
-        guard !hasAlreadyBeenUsed(word: word) else {
-            throw WordError.alreadyUsed
-        }
-        guard isPossible(word: word) else {
-            throw WordError.notPossible
-        }
-        guard isReal(word: word) else {
-            throw WordError.notRecognised
-        }
-    }
-    
-    private func hasAlreadyBeenUsed(word: String) -> Bool {
-        usedWords.contains(word)
-    }
-    
-    private func isPossible(word: String) -> Bool {
-        var tempWord = rootWord
-        
-        for letter in word {
-            if let pos = tempWord.firstIndex(of: letter) {
-                tempWord.remove(at: pos)
-            } else {
-                return false
-            }
-        }
-        
-        return true
     }
     
     private func isReal(word: String) -> Bool {
