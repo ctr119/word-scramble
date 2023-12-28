@@ -10,10 +10,12 @@ import SwiftUI
 class GameViewModel: ObservableObject {
     @Published var usedWords = [String]()
     @Published var newWord = ""
+    @Published var isThereAnError = false
     
     var rootWord = ""
     var points: Int = 0
     var largestWord: String = ""
+    var error: WordError?
     
     func startGame() {
         guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
@@ -35,8 +37,9 @@ class GameViewModel: ObservableObject {
             try validate(word: word)
         } catch {
             if let wError = error as? WordError {
-                let (title, message) = wError.info
-                // TODO: Show the alert with the error
+//                let (title, message) = wError.info
+                self.error = wError
+                isThereAnError = true
 //                errorTitle = title
 //                errorMessage = message
 //                showingError = true

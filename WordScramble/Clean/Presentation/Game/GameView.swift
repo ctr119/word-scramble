@@ -1,10 +1,6 @@
 import SwiftUI
 
-struct GameView: View {
-    @State private var errorTitle = ""
-    @State private var errorMessage = ""
-    @State private var showingError = false
-    
+struct GameView: View {    
     @ObservedObject var viewModel: GameViewModel = .init()
     
     var body: some View {
@@ -40,10 +36,11 @@ struct GameView: View {
             .navigationTitle(viewModel.rootWord)
             .onSubmit(viewModel.addNewWord)
             .onAppear(perform: viewModel.startGame)
-            .alert(errorTitle, isPresented: $showingError) {
+            .alert(viewModel.error?.info.title ?? "",
+                   isPresented: $viewModel.isThereAnError) {
                 Button("OK") { }
             } message: {
-                Text(errorMessage)
+                Text(viewModel.error?.info.description ?? "")
             }
             .toolbar {
                 Button("Re-start", action: viewModel.startGame)

@@ -14,7 +14,7 @@ enum WordError: Error {
     case notPossible
     case notRecognised
     
-    var info: (String, String) {
+    var info: (title: String, description: String) {
         switch self {
         case .short:
             return ("Short word", "Think about words with more than 2 letters")
