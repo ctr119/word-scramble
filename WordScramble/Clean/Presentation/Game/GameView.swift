@@ -22,7 +22,7 @@ struct GameView: View {
                     .autocorrectionDisabled()
                     .padding()
                 
-                List(usedWords, id: \.self) { word in
+                List(viewModel.usedWords, id: \.self) { word in
                     HStack {
                         Image(systemName: "\(word.count).circle")
                         Text(word)
@@ -31,43 +31,31 @@ struct GameView: View {
                 .listStyle(.inset)
                 
                 VStack(alignment: .center, spacing: 20) {
-                    Text("^[\(points) point](inflect: true)")
+                    Text("^[\(viewModel.points) point](inflect: true)")
                         .font(.largeTitle.monospaced())
                         .frame(maxWidth: .infinity)
                     
                     VStack {
                         Text("Largest word")
                             .font(.caption)
-                        Text(largestWord.isEmpty ? "-" : largestWord)
+                        Text(viewModel.largestWord.isEmpty ? "-" : viewModel.largestWord)
                             .font(.body.italic())
                     }
                 }
                 .padding(.top, 20)
             }
-            .navigationTitle(rootWord)
+            .navigationTitle(viewModel.rootWord)
             .onSubmit(addNewWord)
-            .onAppear(perform: startGame)
+            .onAppear(perform: viewModel.startGame)
             .alert(errorTitle, isPresented: $showingError) {
                 Button("OK") { }
             } message: {
                 Text(errorMessage)
             }
             .toolbar {
-                Button("Re-start", action: startGame)
+                Button("Re-start", action: viewModel.startGame)
             }
         }
-    }
-    
-    // TODO: Migrating...
-    private func startGame() {
-        guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
-              let fileContent = try? String(contentsOf: fileUrl) else { fatalError() }
-        
-        let words = fileContent.components(separatedBy: "\n")
-        rootWord = words.randomElement() ?? "silkworm"
-        points = 0
-        largestWord = ""
-        usedWords.removeAll()
     }
     
     private func addNewWord() {
