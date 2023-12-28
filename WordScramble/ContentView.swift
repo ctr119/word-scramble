@@ -1,29 +1,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    enum WordError: Error {
-        case short
-        case same
-        case alreadyUsed
-        case notPossible
-        case notRecognised
-        
-        var info: (String, String) {
-            switch self {
-            case .short:
-                return ("Short word", "Think about words with more than 2 letters")
-            case .same:
-                return ("Same word", "Use a different word than the root one!")
-            case .alreadyUsed:
-                return ("Word used already", "Be more original")
-            case .notPossible:
-                return ("Word not possible", "You can't spell that word from the root one!")
-            case .notRecognised:
-                return ("Word not recognized", "You can't just make them up, you know!")
-            }
-        }
-    }
-    
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
@@ -166,60 +143,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-private extension ContentView {
-    private var genuineDynamicList: some View {
-        List(0..<5) {
-            Text("Dynamic row \($0)")
-        }
-    }
-    
-    private var mixedList: some View {
-        List {
-            Section("Section 1") {
-                Text("Static row 1")
-                Text("Static row 2")
-            }
-
-            Section("Section 2") {
-                ForEach(0..<5) {
-                    Text("Dynamic row \($0)")
-                }
-            }
-
-            Section("Section 3") {
-                Text("Static row 3")
-                Text("Static row 4")
-            }
-        }
-        .listStyle(.grouped)
-    }
-    
-    private func loadResourcesFromAppBundle() {
-        guard let fileUrl = Bundle.main.url(forResource: "test", withExtension: "txt"),
-              let fileContent = try? String(contentsOf: fileUrl) else {
-            return
-        }
-        
-        print(fileContent) // Content loaded!
-    }
-    
-    private func meetUIChecker() {
-        let word = "swift"
-        let checker = UITextChecker()
-        let range = NSRange(location: 0, length: word.utf16.count)
-        
-        let misspelledRange = checker.rangeOfMisspelledWord(in: word,
-                                                            range: range,
-                                                            startingAt: 0,
-                                                            wrap: false,
-                                                            language: "en")
-        let allGood = misspelledRange.location == NSNotFound
-        print(allGood)
-    }
+#Preview {
+    ContentView()
 }
