@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		205713B42B3E3407009CF265 /* WordError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713B32B3E3407009CF265 /* WordError.swift */; };
 		205713B72B3E3436009CF265 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713B62B3E3436009CF265 /* Examples.swift */; };
+		205713BA2B3E3606009CF265 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713B92B3E3606009CF265 /* GameViewModel.swift */; };
 		3ED1955B2AF5BA09000EEFDB /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1955A2AF5BA09000EEFDB /* WordScrambleApp.swift */; };
 		3ED1955D2AF5BA09000EEFDB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1955C2AF5BA09000EEFDB /* GameView.swift */; };
 		3ED1955F2AF5BA0B000EEFDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ED1955E2AF5BA0B000EEFDB /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		205713B32B3E3407009CF265 /* WordError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordError.swift; sourceTree = "<group>"; };
 		205713B62B3E3436009CF265 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
+		205713B92B3E3606009CF265 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		3ED195572AF5BA09000EEFDB /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ED1955A2AF5BA09000EEFDB /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
 		3ED1955C2AF5BA09000EEFDB /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				3ED1955C2AF5BA09000EEFDB /* GameView.swift */,
+				205713B92B3E3606009CF265 /* GameViewModel.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				205713B72B3E3436009CF265 /* Examples.swift in Sources */,
 				3ED1955D2AF5BA09000EEFDB /* GameView.swift in Sources */,
 				3ED1955B2AF5BA09000EEFDB /* WordScrambleApp.swift in Sources */,
+				205713BA2B3E3606009CF265 /* GameViewModel.swift in Sources */,
 				205713B42B3E3407009CF265 /* WordError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

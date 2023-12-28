@@ -12,6 +12,8 @@ struct GameView: View {
     @State private var points: Int = 0
     @State private var largestWord: String = ""
     
+    @ObservedObject var viewModel: GameViewModel = .init()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -56,6 +58,7 @@ struct GameView: View {
         }
     }
     
+    // TODO: Migrating...
     private func startGame() {
         guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
               let fileContent = try? String(contentsOf: fileUrl) else { fatalError() }
