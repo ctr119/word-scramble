@@ -37,12 +37,8 @@ class GameViewModel: ObservableObject {
             try validate(word: word)
         } catch {
             if let wError = error as? WordError {
-//                let (title, message) = wError.info
                 self.error = wError
                 isThereAnError = true
-//                errorTitle = title
-//                errorMessage = message
-//                showingError = true
             }
             return
         }

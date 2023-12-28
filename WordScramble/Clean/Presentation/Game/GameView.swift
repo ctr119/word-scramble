@@ -36,12 +36,8 @@ struct GameView: View {
             .navigationTitle(viewModel.rootWord)
             .onSubmit(viewModel.addNewWord)
             .onAppear(perform: viewModel.startGame)
-            .alert(viewModel.error?.info.title ?? "",
-                   isPresented: $viewModel.isThereAnError) {
-                Button("OK") { }
-            } message: {
-                Text(viewModel.error?.info.description ?? "")
-            }
+            .manage(error: viewModel.error, 
+                    when: $viewModel.isThereAnError)
             .toolbar {
                 Button("Re-start", action: viewModel.startGame)
             }
