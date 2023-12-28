@@ -9,9 +9,9 @@ import SwiftUI
 
 class GameViewModel: ObservableObject {
     @Published var usedWords = [String]()
-    var rootWord = ""
-    var newWord = ""
+    @Published var newWord = ""
     
+    var rootWord = ""
     var points: Int = 0
     var largestWord: String = ""
     
