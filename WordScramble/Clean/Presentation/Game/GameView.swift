@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct GameView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
@@ -144,5 +144,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    GameView()
 }
