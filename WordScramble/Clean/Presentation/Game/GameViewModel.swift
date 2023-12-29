@@ -27,6 +27,7 @@ class GameViewModel: ObservableObject {
         rootWord = words.randomElement() ?? "silkworm"
         points = 0
         largestWord = ""
+        newWord = ""
         usedWords.removeAll()
     }
     
@@ -40,7 +41,7 @@ class GameViewModel: ObservableObject {
                                     rootWord: rootWord,
                                     usedWords: usedWords)
             
-            guard isReal(word: word) else {
+            if !isReal(word: word) {
                 throw WordError.notRecognised
             }
         } catch {
@@ -51,14 +52,14 @@ class GameViewModel: ObservableObject {
             return
         }
         
-        withAnimation {
-            usedWords.insert(word, at: 0)
-            points += word.count
-            
-            if word.count > largestWord.count {
-                largestWord = word
-            }
+        
+        usedWords.insert(word, at: 0)
+        points += word.count
+        
+        if word.count > largestWord.count {
+            largestWord = word
         }
+        
         newWord = ""
     }
     

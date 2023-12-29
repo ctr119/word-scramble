@@ -34,7 +34,11 @@ struct GameView: View {
                 .padding(.top, 20)
             }
             .navigationTitle(viewModel.rootWord)
-            .onSubmit(viewModel.addNewWord)
+            .onSubmit {
+                withAnimation {
+                    viewModel.addNewWord()
+                }
+            }
             .onAppear(perform: viewModel.startGame)
             .manage(error: viewModel.error, 
                     when: $viewModel.isThereAnError)
