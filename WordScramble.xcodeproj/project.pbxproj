@@ -13,6 +13,9 @@
 		205713BD2B3E3E68009CF265 /* WordErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713BC2B3E3E68009CF265 /* WordErrorModifier.swift */; };
 		205713C02B3E40A1009CF265 /* ValidateWordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */; };
 		205713C22B3E452F009CF265 /* GetNewWordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713C12B3E452F009CF265 /* GetNewWordUseCase.swift */; };
+		205713C72B3E46A3009CF265 /* FileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713C62B3E46A3009CF265 /* FileDataSource.swift */; };
+		205713C92B3E474E009CF265 /* WordsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713C82B3E474E009CF265 /* WordsRepository.swift */; };
+		205713CB2B3E47C1009CF265 /* FileDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713CA2B3E47C1009CF265 /* FileDataError.swift */; };
 		3ED1955B2AF5BA09000EEFDB /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1955A2AF5BA09000EEFDB /* WordScrambleApp.swift */; };
 		3ED1955D2AF5BA09000EEFDB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1955C2AF5BA09000EEFDB /* GameView.swift */; };
 		3ED1955F2AF5BA0B000EEFDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ED1955E2AF5BA0B000EEFDB /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 		205713BC2B3E3E68009CF265 /* WordErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordErrorModifier.swift; sourceTree = "<group>"; };
 		205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateWordUseCase.swift; sourceTree = "<group>"; };
 		205713C12B3E452F009CF265 /* GetNewWordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewWordUseCase.swift; sourceTree = "<group>"; };
+		205713C62B3E46A3009CF265 /* FileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataSource.swift; sourceTree = "<group>"; };
+		205713C82B3E474E009CF265 /* WordsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsRepository.swift; sourceTree = "<group>"; };
+		205713CA2B3E47C1009CF265 /* FileDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataError.swift; sourceTree = "<group>"; };
 		3ED195572AF5BA09000EEFDB /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ED1955A2AF5BA09000EEFDB /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
 		3ED1955C2AF5BA09000EEFDB /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -49,6 +55,7 @@
 		205713B02B3E33E1009CF265 /* Clean */ = {
 			isa = PBXGroup;
 			children = (
+				205713C42B3E4686009CF265 /* Data */,
 				205713B12B3E33EB009CF265 /* Domain */,
 				205713B22B3E33F5009CF265 /* Presentation */,
 			);
@@ -101,10 +108,28 @@
 		205713BE2B3E407A009CF265 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */,
 				205713C12B3E452F009CF265 /* GetNewWordUseCase.swift */,
+				205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		205713C42B3E4686009CF265 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				205713CA2B3E47C1009CF265 /* FileDataError.swift */,
+				205713C82B3E474E009CF265 /* WordsRepository.swift */,
+				205713C52B3E468D009CF265 /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		205713C52B3E468D009CF265 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				205713C62B3E46A3009CF265 /* FileDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		3ED1954E2AF5BA09000EEFDB = {
@@ -218,8 +243,11 @@
 				205713C02B3E40A1009CF265 /* ValidateWordUseCase.swift in Sources */,
 				205713C22B3E452F009CF265 /* GetNewWordUseCase.swift in Sources */,
 				205713B72B3E3436009CF265 /* Examples.swift in Sources */,
+				205713C92B3E474E009CF265 /* WordsRepository.swift in Sources */,
 				205713BD2B3E3E68009CF265 /* WordErrorModifier.swift in Sources */,
+				205713CB2B3E47C1009CF265 /* FileDataError.swift in Sources */,
 				3ED1955D2AF5BA09000EEFDB /* GameView.swift in Sources */,
+				205713C72B3E46A3009CF265 /* FileDataSource.swift in Sources */,
 				3ED1955B2AF5BA09000EEFDB /* WordScrambleApp.swift in Sources */,
 				205713BA2B3E3606009CF265 /* GameViewModel.swift in Sources */,
 				205713B42B3E3407009CF265 /* WordError.swift in Sources */,

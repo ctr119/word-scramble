@@ -8,11 +8,14 @@
 import Foundation
 
 class GetNewWordUseCase {
+    private let wordsRepository: WordsRepository
+    
+    init(wordsRepository: WordsRepository = .init()) {
+        self.wordsRepository = wordsRepository
+    }
+    
     func callAsFunction() -> String {
-        guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
-              let fileContent = try? String(contentsOf: fileUrl) else { fatalError() }
-        
-        let words = fileContent.components(separatedBy: "\n")
+        let words = wordsRepository.getWords()
         return words.randomElement() ?? "silkworm"
     }
 }
