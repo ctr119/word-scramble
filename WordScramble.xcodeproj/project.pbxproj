@@ -12,6 +12,7 @@
 		205713BA2B3E3606009CF265 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713B92B3E3606009CF265 /* GameViewModel.swift */; };
 		205713BD2B3E3E68009CF265 /* WordErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713BC2B3E3E68009CF265 /* WordErrorModifier.swift */; };
 		205713C02B3E40A1009CF265 /* ValidateWordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */; };
+		205713C22B3E452F009CF265 /* GetNewWordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205713C12B3E452F009CF265 /* GetNewWordUseCase.swift */; };
 		3ED1955B2AF5BA09000EEFDB /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1955A2AF5BA09000EEFDB /* WordScrambleApp.swift */; };
 		3ED1955D2AF5BA09000EEFDB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1955C2AF5BA09000EEFDB /* GameView.swift */; };
 		3ED1955F2AF5BA0B000EEFDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ED1955E2AF5BA0B000EEFDB /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		205713B92B3E3606009CF265 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		205713BC2B3E3E68009CF265 /* WordErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordErrorModifier.swift; sourceTree = "<group>"; };
 		205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateWordUseCase.swift; sourceTree = "<group>"; };
+		205713C12B3E452F009CF265 /* GetNewWordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewWordUseCase.swift; sourceTree = "<group>"; };
 		3ED195572AF5BA09000EEFDB /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ED1955A2AF5BA09000EEFDB /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
 		3ED1955C2AF5BA09000EEFDB /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				205713BF2B3E40A1009CF265 /* ValidateWordUseCase.swift */,
+				205713C12B3E452F009CF265 /* GetNewWordUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				205713C02B3E40A1009CF265 /* ValidateWordUseCase.swift in Sources */,
+				205713C22B3E452F009CF265 /* GetNewWordUseCase.swift in Sources */,
 				205713B72B3E3436009CF265 /* Examples.swift in Sources */,
 				205713BD2B3E3E68009CF265 /* WordErrorModifier.swift in Sources */,
 				3ED1955D2AF5BA09000EEFDB /* GameView.swift in Sources */,

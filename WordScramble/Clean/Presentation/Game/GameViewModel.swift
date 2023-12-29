@@ -17,14 +17,17 @@ class GameViewModel: ObservableObject {
     var largestWord: String = ""
     var error: WordError?
     
-    private let validateWordUseCase = ValidateWordUseCase()
+    private let getNewWordUseCase: GetNewWordUseCase
+    private let validateWordUseCase: ValidateWordUseCase
+    
+    init(getNewWordUseCase: GetNewWordUseCase = .init(),
+         validateWordUseCase: ValidateWordUseCase = .init()) {
+        self.getNewWordUseCase = getNewWordUseCase
+        self.validateWordUseCase = validateWordUseCase
+    }
     
     func startGame() {
-        guard let fileUrl = Bundle.main.url(forResource: "start", withExtension: "txt"),
-              let fileContent = try? String(contentsOf: fileUrl) else { fatalError() }
-        
-        let words = fileContent.components(separatedBy: "\n")
-        rootWord = words.randomElement() ?? "silkworm"
+        rootWord = getNewWordUseCase()
         points = 0
         largestWord = ""
         newWord = ""
